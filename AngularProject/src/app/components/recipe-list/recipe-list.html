@@ -1,0 +1,91 @@
+<div class="main-layout" dir="rtl">
+
+  <aside class="sidebar">
+    <header *ngIf="auth.getUserRole() === 'Admin'" class="admin-header">
+      <button (click)="toggleEditMode()" class="manage-btn">
+        {{ isEditMode ? 'צא ממצב ניהול' : 'נהל מתכונים ⚙️' }}
+      </button>
+    </header>
+
+    <section class="hero-section">
+      <div class="fridge-search">
+        <input type="text" #ingredientsInput class="custom-input" placeholder="מה יש במקרר?">
+        <button (click)="searchByIngredients(ingredientsInput.value)" class="search-btn">מצאו לי מתכון</button>
+      </div>
+    </section>
+
+    <nav class="filter-bar">
+      <h3>חיפוש וסינון</h3>
+      <div class="filter-group">
+        <label>חפשי מתכון:</label>
+        <input type="text" class="custom-input" placeholder="למשל: עוגה..." [(ngModel)]="searchTerm"
+          (input)="applyFilters()">
+      </div>
+
+      <div class="filter-group">
+        <label>סוג מתכון:</label>
+        <select class="custom-select" [(ngModel)]="selectedType" (change)="applyFilters()">
+          <option value="All">כל הסוגים</option>
+          <option value="Dairy">חלבי 🧀</option>
+          <option value="Meat">בשרי 🥩</option>
+          <option value="Parve">פרווה 🍎</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label>מיין לפי:</label>
+        <select class="custom-select" [(ngModel)]="sortBy" (change)="applyFilters()">
+          <option value="newest">חדש ביותר</option>
+          <option value="prep_time">זמן הכנה</option>
+          <option value="rating">דירוג גולשים</option>
+        </select>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="content-area">
+    <div class="recipe-grid">
+      <div class="recipe-card" *ngFor="let recipe of filteredRecipes">
+
+        <div class="card-image">
+          <img [src]="'http://127.0.0.1:5000/uploads/' + recipe.image" [alt]="recipe.title">
+          <button (click)="toggleFav(recipe)" class="fav-btn">
+            <span>{{ recipe.is_favorite ? '❤️' : '🤍' }}</span>
+
+          </button>
+        </div>
+
+        <div class="card-content">
+          <div *ngIf="recipe.score" class="match-badge">
+            {{ recipe.score }}% התאמה למקרר!
+          </div>
+          <div class="score-badge" *ngIf="recipe.score">{{ recipe.score }}% התאמה</div>
+          <p *ngIf="recipe.missing_ingredients?.length">חסר לך: {{ recipe.missing_ingredients.join(', ') }}</p>
+          <h3>{{ recipe.title }}</h3>
+
+          <div class="recipe-meta">
+            <span>🕒{{recipe.prep_time}} דק'</span>
+            <span>{{ recipe.recipe_type === 'Meat' ? '🥩 בשרי' : recipe.recipe_type === 'Dairy' ? '🧀 חלבי' : '🍎 פרווה'
+              }}</span>
+          </div>
+
+          <div class="rating-display">
+            <span *ngFor="let star of [1,2,3,4,5]" (click)="onRate(recipe, star)"
+              [style.color]="star <= (recipe.avg_rating || 0) ? '#ffb400' : '#ccc'" class="star-icon">
+              ★
+            </span>
+            <small>{{ recipe.avg_rating | number:'1.1-1' }}</small>
+          </div>
+
+          <div class="card-actions">
+            <button [routerLink]="['/recipes', recipe.id]" class="view-btn">צפייה במתכון</button>
+            <button *ngIf="auth.getUserRole() === 'Admin' && isEditMode" (click)="onDelete(recipe.id)"
+              class="delete-btn">
+              🗑️
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

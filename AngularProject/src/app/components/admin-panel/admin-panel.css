@@ -1,0 +1,68 @@
+.admin-container {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  direction: rtl;
+}
+
+h2 {
+  color: #2d3436;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #636e72;
+  margin-bottom: 30px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.admin-table th {
+  background-color: #f8f9fa;
+  color: #2d3436;
+  text-align: right;
+  padding: 15px;
+  border-bottom: 2px solid #dfe6e9;
+}
+
+.admin-table td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  color: #2d3436;
+}
+
+.admin-table tr:hover {
+  background-color: #fdfdfd;
+}
+
+.approve-btn {
+  background-color: #00b894;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-weight: bold;
+}
+
+.approve-btn:hover {
+  background-color: #009475;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 50px;
+  color: #b2bec3;
+  font-size: 1.2rem;
+  border: 2px dashed #dfe6e9;
+  border-radius: 10px;
+}

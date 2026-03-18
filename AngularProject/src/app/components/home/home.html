@@ -1,0 +1,90 @@
+<div class="home-wrapper">
+  <header class="hero">
+    <div class="hero-carousel" *ngIf="featuredRecipes.length > 0">
+      <!-- <img [src]="'http://127.0.0.1:5000/recipes/file/' +  featuredRecipes[currentSlide].image" class="fade-in"> -->
+      <img [src]="'http://localhost:5000/uploads/' + featuredRecipes[currentSlide].image" class="fade-in">
+      <div class="hero-content">
+        <h1 class="typewriter">{{ displayAbout }}</h1>
+        <p class="fade-in-up">גלו מתכונים חדשים, שתפו את שלכם והצטרפו לקהילה</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="search-area">
+    <div class="search-container">
+      <div class="input-wrapper">
+        <input type="text" [(ngModel)]="searchQuery" (input)="applyFilter()" placeholder="מה תרצו לבשל היום?">
+        <button class="search-btn"><i class="fas fa-search"></i></button>
+      </div>
+
+      <div class="floating-results" *ngIf="searchQuery.length > 1 && filteredRecipes.length > 0">
+        <div class="result-card" *ngFor="let recipe of filteredRecipes.slice(0, 4)"
+          [routerLink]="['/recipe', recipe.id]">
+          <img [src]="'http://localhost:5000/uploads/' + recipe.image">
+          <div class="result-details">
+            <span class="title">{{ recipe.title }}</span>
+            <span class="meta">{{ recipe.recipe_type === 'Meat' ? 'בשרי' : recipe.recipe_type === 'Dairy' ? 'חלבי' :
+              'פרווה' }} | {{ recipe.prep_time }} דק'</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="latest-recipes">
+    <h2 class="title">המתכונים החדשים ביותר</h2>
+    <div class="recipe-grid">
+      <div class="recipe-card" *ngFor="let r of allRecipes.slice(-3)">
+        <div class="card-image">
+          <img [src]="'http://localhost:5000/uploads/' + r.image">
+          <div class="rating-badge">⭐ {{ r.avg_rating }}</div>
+        </div>
+        <div class="card-info">
+          <h3>{{ r.title }}</h3>
+          <button (click)="rate(r, 5)" class="heart-btn">
+            <i [class]="r.is_favorite ? 'fas fa-heart' : 'far fa-heart'"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="about-footer">
+    <div class="about-container">
+      <div class="about-text-content">
+        <h2 class="footer-heading">מתכון עם טעם של בית</h2>
+        <p>
+          הפרויקט הזה נולד מהתשוקה לאוכל שמחבר בין אנשים. המטרה שלנו היא לא רק לתת לכם רשימת מצרכים, אלא להעניק לכם
+          השראה יומיומית למטבח שלכם.
+        </p>
+        <ul class="about-features">
+          <li><i class="fas fa-check-circle"></i> <strong>מתכונים מכל הלב:</strong> מבחר רחב של סגנונות וטעמים.</li>
+          <li><i class="fas fa-check-circle"></i> <strong>קהילה משתפת:</strong> כל אחד יכול לבקש להעלות מתכון ולהפוך
+            לחלק מהיוצרים.</li>
+          <li><i class="fas fa-check-circle"></i> <strong>חיפוש חכם:</strong> למצוא בדיוק את מה שמתחשק לכם, לפי זמן הכנה
+            או סוג מנה.</li>
+        </ul>
+      </div>
+      <div class="footer-logo-area">
+        <!-- <img src="1.png" alt="Logo" class="footer-logo-img"> -->
+        <!-- <svg alt="Logo" viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg"></svg> -->
+        <p class="slogan">מבשלים, טועמים, נהנים.</p>
+      </div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-box">
+        <span class="stat-number">+500</span>
+        <span class="stat-label">מתכונים</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-box">
+        <span class="stat-number">2,000</span>
+        <span class="stat-label">בשלנים</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-box">
+        <span class="stat-number">15</span>
+        <span class="stat-label">קטגוריות</span>
+      </div>
+    </div>
+  </section>
+</div>

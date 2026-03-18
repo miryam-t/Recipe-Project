@@ -1,0 +1,72 @@
+<div class="recipe-container" *ngIf="recipe">
+
+  <div class="right-side">
+    <div class="main-display">
+      <img [src]="'http://localhost:5000/uploads/' + activeImage" class="big-photo">
+      <div class="polaroid-caption">{{ recipe.title }}</div>
+    </div>
+    <div class="thumbnails-grid">
+      <img *ngFor="let v of [recipe.image].concat(recipe.variations)" [src]="'http://localhost:5000/uploads/' + v"
+        (click)="changeImage(v)" [class.active]="activeImage === v">
+    </div>
+  </div>
+
+  <div class="left-side">
+
+    <header class="left-header" *ngIf="recipe">
+      <h1 class="recipe-title">{{ recipe.title }}</h1>
+
+      <div class="recipe-meta no-print">
+        <span class="meta-item">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span class="text">{{ recipe?.prep_time }} דקות</span>
+        </span>
+
+        <span class="separator">|</span>
+
+        <span class="meta-item">
+          <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M2 22l1.25-9h1.5L6 22M18 22l1.25-9h1.5L22 22M12 2v20M8 2h8"></path>
+          </svg>
+          <span class="text"><strong>{{ recipe.recipe_type === 'Meat' ? 'בשרי' : recipe.recipe_type === 'Dairy' ? 'חלבי'
+              : 'פרווה' }}</strong></span>
+        </span>
+
+        <span class="separator">|</span>
+
+        <span class="meta-item">
+          <svg class="meta-icon star-icon" viewBox="0 0 24 24" fill="currentColor">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+            </polygon>
+          </svg>
+          <span class="text"><strong>{{ recipe?.avg_rating }}</strong></span>
+        </span>
+
+      </div>
+    </header>
+    <div class="scrollable-content">
+      <div class="content-section">
+        <h3 class="section-title">מצרכים</h3>
+        <ul class="ingredients-list">
+          <li *ngFor="let ing of recipe.ingredients; let i = index" class="ingredient-item">
+            <input type="checkbox" [id]="'ing-' + i" class="custom-checkbox">
+            <label [for]="'ing-' + i">
+              {{ ing.amount }} {{ ing.unit }} {{ ing.product }}
+            </label>
+          </li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <h3 class="section-title">הוראות הכנה</h3>
+        <p class="instructions">{{ recipe.instructions }}</p>
+      </div>
+    </div>
+
+    <button class="back-link no-print" routerLink="/recipes">→ חזרה לגלריה</button>
+  </div>
+</div>

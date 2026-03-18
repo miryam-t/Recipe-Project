@@ -1,0 +1,183 @@
+/* עטיפה כללית לרקע הדף */
+.login-wrapper {
+    background-color: #FFFDF5; /* שמנת */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Assistant', sans-serif;
+    padding: 20px;
+}
+
+/* כרטיסיית ההתחברות */
+.login-card {
+    background: #ffffff;
+    max-width: 450px;
+    width: 100%;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(85, 107, 47, 0.1);
+    border: 1px solid #e0d7cc;
+    text-align: center;
+    animation: fadeInSlide 0.8s ease-out;
+}
+
+/* כותרות */
+.login-header h2 {
+    color: #D2691E; /* טרקוטה */
+    font-size: 2.2rem;
+    margin: 0 0 10px 0;
+}
+
+.login-header p {
+    color: #556B2F; /* זית */
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+/* הודעת המצלמה */
+.camera-info {
+    background-color: #f9f6f0;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border-right: 4px solid #D2691E;
+}
+
+.camera-hint {
+    font-size: 0.9rem;
+    color: #3E2723;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* אזור המצלמה */
+.camera-section {
+    margin-bottom: 25px;
+}
+
+.enable-cam-btn {
+    background-color: #556B2F; /* זית */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.enable-cam-btn:hover {
+    background-color: #3e4d22;
+    transform: scale(1.02);
+}
+
+.video-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 50%; /* צילום בעיגול */
+    overflow: hidden;
+    border: 4px solid #D2691E;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.video-feed {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.camera-overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(85, 107, 47, 0.8);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+/* שדות קלט */
+.input-field {
+    margin-bottom: 15px;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #e0d7cc;
+    border-radius: 15px;
+    background: #fcfcfc;
+    outline: none;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+.input-field input:focus {
+    border-color: #D2691E;
+    box-shadow: 0 0 8px rgba(210, 105, 30, 0.15);
+}
+
+/* כפתור כניסה */
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background-color: #D2691E;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.submit-btn:hover:not(:disabled) {
+    background-color: #b35919;
+    box-shadow: 0 8px 20px rgba(210, 105, 30, 0.3);
+}
+
+.submit-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* פוטר - קישור להרשמה */
+.login-footer {
+    margin-top: 25px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.login-footer a {
+    color: #D2691E;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-footer a:hover {
+    color: #556B2F;
+    text-decoration: underline;
+}
+
+/* אנימציה */
+@keyframes fadeInSlide {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}

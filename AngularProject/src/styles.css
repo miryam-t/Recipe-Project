@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+    /* גובה הנאבבאר שלך בערך 70-150 פיקסלים, נותנים מרווח ביטחון */
+   padding-top: 50px; /* דוחף את כל התוכן מתחת לנאבבאר */
+    background-color: #f9f9f9;
+}

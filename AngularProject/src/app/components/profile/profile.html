@@ -1,0 +1,92 @@
+<div class="profile-page" dir="rtl" *ngIf="user">
+
+  <mat-card class="user-info-card">
+    <div class="header-layout">
+      <div class="profile-image-frame">
+        <img [src]="userImageUrl" (error)="$any($event.target).src = '1.png'" class="circle-avatar">
+      </div>
+      <div class="profile-details">
+        <h2>שלום, {{ user.username }}</h2>
+        <span class="role-chip" [ngClass]="user.role">
+          {{ getUserRoleLabel() }}
+        </span>
+      </div>
+    </div>
+  </mat-card>
+
+  <mat-card class="actions-card">
+    <h3>האיזור שלי</h3>
+    <div class="actions-grid">
+
+
+      <div class="stats-badge" *ngIf="myFavoriteRecipes.length > 0">
+        <div class="stat-item">
+          <span class="stat-value">{{ myFavoriteRecipes.length }}</span>
+          <span class="stat-label">מתכונים שאהבתי</span>
+        </div>
+      </div>
+      <button mat-flat-button color="warn" (click)="toggleFavorites()" style="border-radius: 12px; padding: 10px 20px;">
+        <mat-icon>{{ showFavorites ? 'favorite' : 'favorite_border' }}</mat-icon>
+        {{ showFavorites ? 'הסתר מועדפים' : 'המתכונים שאהבתי' }}
+      </button>
+
+      <div *ngIf="showFavorites" class="favorites-container animate-fade">
+        <div class="favorites-grid">
+          <div class="mini-recipe-card" *ngFor="let recipe of myFavoriteRecipes">
+            <div class="card-img">
+              <img [src]="'http://127.0.0.1:5000/uploads/' + recipe.image" (error)="$any($event.target).src = '1.png'">
+              <button mat-icon-button class="remove-btn" (click)="removeFromFavorites(recipe.id)">
+                <mat-icon>close</mat-icon>
+              </button>
+            </div>
+            <div class="card-info">
+              <h4>{{ recipe.title }}</h4>
+              <button [routerLink]="['/recipes', recipe.id]" mat-stroked-button color="primary">
+                צפה במתכון
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button *ngIf="user.role === 'Admin'" routerLink="/recipes" mat-raised-button>ניהול מתכונים למנהל</button>
+      <ng-container *ngIf="user.role === 'Reader'">
+
+        <p *ngIf="user?.has_requested_upgrade && user?.role === 'Reader'">
+          <mat-icon>hourglass_empty</mat-icon> בקשתך לשדרוג ממתינה לאישור מנהל
+        </p>
+
+        <button *ngIf="!auth.currentUser?.has_requested_upgrade" mat-raised-button color="accent"
+          (click)="requestUploaderStatus()">
+          <mat-icon>publish</mat-icon> בקשי אישור העלאה
+        </button>
+      </ng-container>
+
+    </div>
+  </mat-card>
+
+  <mat-card *ngIf="user.role === 'Uploader' || user.role === 'Admin'" class="content-management-card">
+    <h3>איזור יוצרי תוכן</h3>
+    <p>כאן תוכלי להוסיף מתכונים חדשים למסד הנתונים.</p>
+    <button mat-raised-button color="warn" routerLink="/add-recipe">
+      <mat-icon>add_box</mat-icon> הוסף מתכון חדש
+    </button>
+  </mat-card>
+
+  <mat-card *ngIf="user.role === 'Admin'" class="admin-control-card">
+    <mat-card-header>
+      <mat-icon mat-card-avatar>security</mat-icon>
+      <mat-card-title>לוח בקרה למנהל</mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <div class="admin-tools">
+        <div class="tool">
+          <h4>ניהול משתמשים</h4>
+          <button mat-flat-button color="primary" routerLink="/admin-dashboard">ניהול בקשות שדרוג</button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+</div>

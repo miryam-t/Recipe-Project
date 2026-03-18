@@ -1,0 +1,51 @@
+<div class="recipe-container" dir="rtl">
+  <div class="right-side">
+    <div class="image-upload-wrapper">
+      <div class="image-preview-container">
+        <img *ngIf="imagePreview" [src]="imagePreview">
+        <span *ngIf="!imagePreview">לחצי לבחירת תמונה</span>
+      </div>
+      <label class="file-label">
+        צילום המנה...
+        <input type="file" (change)="onFileSelected($event)" style="display: none;">
+      </label>
+    </div>
+  </div>
+
+  <div class="left-side">
+    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+      <input formControlName="title" class="recipe-title-input" placeholder="איך נקרא למנה?">
+
+      <div class="recipe-meta">
+        <div class="form-group">
+          <label>זמן הכנה:</label>
+          <input type="number" formControlName="prep_time" class="custom-input">
+        </div>
+        <div class="form-group">
+          <label>סוג:</label>
+          <select formControlName="type" class="custom-select">
+            <option value="Dairy">חלבי</option>
+            <option value="Meat">בשרי</option>
+            <option value="Parve">פרווה</option>
+          </select>
+        </div>
+      </div>
+
+      <h3 class="section-title">הוראות הכנה</h3>
+      <textarea formControlName="instructions" rows="6" class="custom-textarea" placeholder="איך מכינים?"></textarea>
+
+      <h3 class="section-title">רכיבים</h3>
+      <div formArrayName="ingredients">
+        <div *ngFor="let ing of ingredients.controls; let i=index" [formGroupName]="i" class="ingredient-row">
+          <input formControlName="product" placeholder="מוצר" class="custom-input flex-3">
+          <input formControlName="amount" type="number" placeholder="כמות" class="custom-input flex-1">
+          <input formControlName="unit" placeholder="יחידה" class="custom-input flex-1">
+          <button type="button" (click)="removeIngredient(i)" class="btn-remove">X</button>
+        </div>
+      </div>
+      <button type="button" (click)="addIngredient()" class="btn-add">+ הוספת רכיב</button>
+
+      <button type="submit" [disabled]="recipeForm.invalid" class="btn-submit">פרסום מתכון לאתר</button>
+    </form>
+  </div>
+</div>

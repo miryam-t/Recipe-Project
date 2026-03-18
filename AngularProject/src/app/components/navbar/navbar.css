@@ -1,0 +1,123 @@
+/* מבנה הבסיס - דף הבית במצב נייח */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: white;
+    z-index: 1000;
+    transition: all 0.5s ease;
+    display: flex;
+    justify-content: center;
+    direction: rtl;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.nav-container {
+    display: flex;
+    flex-direction: column;
+    /* לוגו מעל כפתורים */
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 15px 0;
+    transition: all 0.5s ease;
+}
+
+/* --- מצב גלילה: כאן הלוגו חייב לזוז --- */
+.navbar.scrolled .nav-container,
+.navbar:not(.is-home) .nav-container {
+    flex-direction: row;
+    /* הופך לשורה אחת */
+    justify-content: space-between;
+    /* דוחף לצדדים */
+    align-items: center;
+    padding: 0 40px;
+    height: 70px;
+}
+
+/* טיפול במיכל הלוגו כדי שלא יישאר תקוע באמצע */
+.logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.5s ease;
+    /* ביטול מרכוז כפוי בגלילה */
+}
+
+.scrolled .logo-wrapper,
+.navbar:not(.is-home) .logo-wrapper {
+    align-items: flex-start;
+    /* מצמיד לשוליים שלו */
+    margin: 0;
+}
+
+.logo-main {
+    font-family: 'Amatic SC', cursive;
+    font-size: 80px;
+    color: #2d2d2d;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: font-size 0.4s ease;
+}
+
+/* הקטנת הלוגו */
+.scrolled .logo-main,
+.navbar:not(.is-home) .logo-main {
+    font-size: 35px;
+}
+
+/* הפס המפריד */
+.separator {
+    width: 250px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #999, transparent);
+    margin: 10px 0;
+}
+
+/* העלמת הפס והסלוגן בגלילה */
+.scrolled .separator,
+.scrolled .tagline,
+.navbar:not(.is-home) .separator,
+.navbar:not(.is-home) .tagline {
+    display: none;
+}
+
+/* תפריט הניווט - עיצוב הכפתורים */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-family: 'Almarai', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+/* האפקט של הפס מתחת לאותיות שביקשת */
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #e91e63;
+    transition: width 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+.nav-links li a:hover {
+    color: #e91e63;
+}

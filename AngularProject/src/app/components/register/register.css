@@ -1,0 +1,192 @@
+/* הגדרת רקע לכל הדף */
+.register-page-wrapper {
+    background-color: #FFFDF5; /* צבע השמנת שבחרנו */
+    min-height: 100vh; /* תופס את כל גובה המסך */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    direction: rtl;
+    font-family: 'Assistant', sans-serif;
+}
+
+/* כרטיסיית ההרשמה */
+.register-container {
+    max-width: 400px;
+    width: 90%; /* גמישות למובייל */
+    padding: 40px;
+    background-color: #ffffff; /* לבן נקי כדי שיבלוט על השמנת */
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(85, 107, 47, 0.1); /* צל בגוון זית עדין */
+    border: 1px solid #e0d7cc;
+    text-align: center;
+}
+
+.register-container h2 {
+    color: #556B2F; /* ירוק זית */
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+}
+
+/* שדות הקלט */
+input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #e0d7cc;
+    border-radius: 15px;
+    font-size: 1rem;
+    background-color: #fcfcfc;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #D2691E; /* טרקוטה */
+    background-color: #ffffff;
+    box-shadow: 0 0 8px rgba(210, 105, 30, 0.15);
+}
+
+/* כפתור הירשם */
+button {
+    width: 100%;
+    padding: 16px;
+    background-color: #D2691E; /* טרקוטה */
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #b35919;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(210, 105, 30, 0.3);
+}
+
+/* קישור להתחברות */
+.login-link {
+    margin-top: 25px;
+    font-size: 1rem;
+    color: #636e72;
+}
+
+.login-link a {
+    color: #D2691E; /* טרקוטה */
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 5px;
+    transition: color 0.2s;
+}
+
+.login-link a:hover {
+    color: #556B2F; /* הופך לזית בריחוף */
+    text-decoration: underline;
+}
+/* הגדרת רקע לכל הדף */
+.register-page-wrapper {
+    background-color: #FFFDF5; /* צבע השמנת */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    direction: rtl;
+    font-family: 'Assistant', sans-serif;
+    overflow: hidden; /* למניעת פסי גלילה בזמן האנימציה */
+}
+
+/* כרטיסיית ההרשמה עם אנימציה */
+.register-container {
+    max-width: 400px;
+    width: 90%;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(85, 107, 47, 0.1);
+    border: 1px solid #e0d7cc;
+    text-align: center;
+    
+    /* הפעלת האנימציה */
+    animation: slideUpFade 0.8s ease-out forwards;
+}
+
+.register-container h2 {
+    color: #556B2F; /* ירוק זית */
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+}
+
+/* שדות הקלט */
+input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #e0d7cc;
+    border-radius: 15px;
+    font-size: 1rem;
+    background-color: #fcfcfc;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #D2691E; /* טרקוטה */
+    background-color: #ffffff;
+    box-shadow: 0 0 8px rgba(210, 105, 30, 0.15);
+}
+
+/* כפתור הירשם */
+button {
+    width: 100%;
+    padding: 16px;
+    background-color: #D2691E; /* טרקוטה */
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #b35919;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(210, 105, 30, 0.3);
+}
+
+/* קישור להתחברות */
+.login-link {
+    margin-top: 25px;
+    font-size: 1rem;
+    color: #636e72;
+}
+
+.login-link a {
+    color: #D2691E;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 5px;
+    transition: color 0.2s;
+}
+
+.login-link a:hover {
+    color: #556B2F;
+    text-decoration: underline;
+}
+
+/* הגדרת האנימציה */
+@keyframes slideUpFade {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

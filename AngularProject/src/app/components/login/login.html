@@ -1,0 +1,47 @@
+<div class="login-wrapper" dir="rtl">
+  <div class="login-card">
+    <div class="login-header">
+      <h2>ברוכים הבאים</h2>
+      <p>התחברי כדי לשתף ולגלות מתכונים חדשים</p>
+    </div>
+
+    <div class="camera-info">
+      <p class="camera-hint">"חיוך קטן וזה שלכם! התמונה תישמר באזור האישי כדי שתרגישו בבית, אבל היא לא תפורסם לאחרים."
+      </p>
+    </div>
+
+    <div class="camera-section">
+      <button type="button" class="enable-cam-btn" *ngIf="!isCameraActive" (click)="startCamera()">
+        <mat-icon>videocam</mat-icon> הפעלי מצלמה לצילום פרופיל
+      </button>
+
+      <div class="video-container" [style.display]="isCameraActive ? 'block' : 'none'">
+        <video #video autoplay playsinline class="video-feed"></video>
+        <div class="camera-overlay">
+          <mat-icon>face</mat-icon>
+          <span>זיהוי פנים מוכן</span>
+        </div>
+      </div>
+      <canvas #canvas style="display: none;"></canvas>
+    </div>
+
+    <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+      <div class="input-field">
+        <input type="text" name="username" [(ngModel)]="loginData.username" placeholder="שם משתמש" required>
+      </div>
+
+      <div class="input-field">
+        <input type="password" name="password" [(ngModel)]="loginData.password" placeholder="סיסמה" required>
+      </div>
+
+      <button type="submit" class="submit-btn" [disabled]="!loginForm.form.valid">
+        <span>התחברי למערכת</span>
+        <i class="camera-icon">📸</i>
+      </button>
+    </form>
+
+    <div class="login-footer">
+      <p>עדיין לא רשומים? <a routerLink="/register">הירשמו עכשיו</a></p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,204 @@
+/* רקע הדף הכללי - צבע שמנת עמוק */
+body {
+  background-color: #E6DED1;
+  /* צבע נייר ישן */
+  margin: 0;
+}
+
+.recipe-container {
+  display: grid;
+  grid-template-columns: 450px 1fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #FFFDF5;
+  /* שמנת */
+  border-radius: 20px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+  direction: rtl;
+  min-height: 100vh;
+}
+
+/* --- צד ימין: העלאת התמונה כפולארויד --- */
+.right-side {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.image-upload-wrapper {
+  background: white;
+  padding: 15px 15px 60px 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transform: rotate(-1.5deg);
+  /* הטיה קלה לצד השני לגיוון */
+  border: 1px solid #eee;
+  text-align: center;
+}
+
+.image-preview-container {
+  width: 100%;
+  height: 380px;
+  background: #f9f9f9;
+  border: 2px dashed var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.image-preview-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.file-label {
+  display: block;
+  margin-top: 15px;
+  font-family: 'Brush Script MT', cursive;
+  color: #D2691E;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* --- צד שמאל: הטופס כדף כתיבה --- */
+.left-side {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.recipe-title-input {
+  border: none;
+  border-bottom: 2px solid #D2691E;
+  background: transparent;
+  font-size: 2.8rem;
+  font-family: serif;
+  color: #D2691E;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.recipe-title-input::placeholder {
+  color: #EBD6C1;
+}
+
+.section-title {
+  color: #556B2F;
+  border-right: 5px solid #D2691E;
+  padding-right: 15px;
+  font-size: 1.6rem;
+  margin: 20px 0;
+}
+
+/* שדות קלט בסגנון נקי ללא "אליפסות" */
+.custom-input,
+.custom-select {
+  border: none;
+  border-bottom: 1px solid #E0D7CC;
+  background: transparent;
+  padding: 5px;
+  width: 100px;
+  font-size: 1.1rem;
+  color: #3E2723;
+  border-radius: 0;
+}
+
+.custom-textarea {
+  width: 100%;
+  border: 1px solid #E0D7CC;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+/* רשימת רכיבים - סגנון שורות מחברת */
+.ingredient-row {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px dashed #E0D7CC;
+}
+
+.btn-add {
+  background: transparent;
+  border: 1px solid #556B2F;
+  color: #556B2F;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.btn-add:hover {
+  background: #556B2F;
+  color: white;
+}
+
+/* כפתור פרסום - בולט כמו ה-back-link */
+.btn-submit {
+  align-self: flex-start;
+  padding: 15px 40px;
+  background: #D2691E;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(210, 105, 30, 0.3);
+  transition: 0.3s;
+  margin-top: 30px;
+}
+
+.btn-submit:hover:not(:disabled) {
+  transform: translateY(-3px);
+  background: #b35919;
+}
+
+.btn-submit:disabled {
+  background: #ccc;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* הודעות שגיאה עדינות */
+.field-error {
+  color: #AE2012;
+  font-size: 0.8rem;
+  display: block;
+  margin-top: 5px;
+}
+
+/* התאמת SweetAlert2 לסגנון הכפרי */
+.swal2-popup {
+  border-radius: 20px !important;
+  border: 2px solid #E0D7CC !important;
+  font-family: serif !important;
+}
+
+.swal2-title {
+  color: #D2691E !important;
+}
+
+.swal2-confirm {
+  border-radius: 50px !important;
+  padding: 12px 30px !important;
+  font-weight: bold !important;
+}
+
+/* התאמת צבע האייקון של השגיאה לסגנון הכפרי */
+.swal2-icon.swal2-error {
+  border-color: #AE2012 !important;
+  color: #AE2012 !important;
+}
+
+.swal2-icon.swal2-error [class^='swal2-x-mark-line'] {
+  background-color: #AE2012 !important;
+}

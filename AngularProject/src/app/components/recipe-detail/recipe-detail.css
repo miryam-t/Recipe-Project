@@ -1,0 +1,292 @@
+/* מכולה ראשית - מאפשרת גלילה טבעית של הדף */
+.recipe-container {
+  display: grid;
+  grid-template-columns: 450px 1fr;
+  /* תמונה רחבה יותר בצד ימין */
+  gap: 40px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #FFFDF5;
+  /* שמנת */
+  border-radius: 20px;
+  direction: rtl;
+  min-height: 100vh;
+}
+
+/* --- צד ימין: פולארויד ותמונות נוספות --- */
+.right-side {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  position: sticky;
+  /* התמונה תישאר בטווח עין בזמן גלילה קצרה */
+  top: 20px;
+}
+
+/* אפקט הפולארויד */
+.main-display {
+  background: white;
+  padding: 15px 15px 60px 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transform: rotate(2deg);
+  border: 1px solid #eee;
+  position: relative;
+}
+
+.big-photo {
+  width: 100%;
+  height: 400px;
+  /* תמונה גדולה ומרשימה */
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.polaroid-caption {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  text-align: center;
+  font-family: 'Brush Script MT', cursive;
+  color: #D2691E;
+  /* טרקוטה */
+  font-size: 1.6rem;
+}
+
+/* הצגת הוריאציות (תמונות קטנות) */
+.thumbnails-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.thumbnails-grid img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 3px solid white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.thumbnails-grid img.active {
+  border-color: #D2691E;
+  transform: scale(1.1);
+}
+
+/* --- צד שמאל: תוכן המתכון --- */
+.left-side {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* כותרת ממורכזת לאמצע הצד השמאלי */
+.left-header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.recipe-title {
+  color: #D2691E;
+  /* טרקוטה */
+  font-size: 3.2rem;
+  margin: 0;
+  font-family: serif;
+}
+
+.recipe-meta {
+  color: #556B2F;
+  /* ירוק זית */
+  font-size: 1.1rem;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+/* כותרות סעיפים */
+.section-title {
+  color: #556B2F;
+  border-right: 5px solid #D2691E;
+  padding-right: 15px;
+  margin-bottom: 20px;
+  font-size: 1.6rem;
+}
+
+/* מצרכים - רשימה נקייה ללא פסים */
+.ingredients-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ingredient-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: 1.2rem;
+}
+
+.custom-checkbox {
+  width: 22px;
+  height: 22px;
+  accent-color: #556B2F;
+  cursor: pointer;
+}
+
+/* הוראות הכנה */
+.instructions {
+  line-height: 1.8;
+  font-size: 1.2rem;
+  color: #3E2723;
+  white-space: pre-line;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.02);
+}
+
+/* כפתור הדפסה וחזרה */
+.print-btn {
+  background: white;
+  border: 1px solid #556B2F;
+  color: #556B2F;
+  padding: 6px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.print-btn:hover {
+  background: #556B2F;
+  color: white;
+}
+
+.back-link {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 12px 25px;
+  background: #D2691E;
+  color: white !important;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(210, 105, 30, 0.3);
+}
+
+.recipe-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* ממרכז את כל השורה */
+  gap: 15px;
+  margin-top: 15px;
+  color: #556B2F;
+  /* ירוק זית מהעיצוב הקודם */
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  /* רווח קטן בין האייקון לטקסט */
+}
+
+.icon {
+  font-size: 1.2rem;
+}
+
+.text {
+  font-size: 1.1rem;
+}
+
+.separator {
+  color: #D2691E;
+  /* טרקוטה למפרידים */
+  opacity: 0.5;
+}
+
+/* עיצוב כפתור ההדפסה שיהיה תואם לצילום המסך */
+.print-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 1px solid #556B2F;
+  padding: 5px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #556B2F;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.print-btn:hover {
+  background: #f0f5e1;
+}
+
+.recipe-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* רווח בין ה-SVG לטקסט */
+}
+
+/* עיצוב כללי לאייקונים */
+.meta-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--accent-olive);
+  /* משתמש בצבע הירוק שהגדרנו */
+}
+
+/* עיצוב ספציפי לכוכב (שיהיה צהוב/זהב) */
+.star-icon {
+  color: #FFD700;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.1));
+}
+
+.text {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+}
+
+.separator {
+  color: #D2691E;
+  font-weight: 300;
+  margin: 0 5px;
+}
+
+.print-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 1.5px solid var(--accent-olive);
+  color: var(--accent-olive);
+  padding: 6px 18px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.print-btn:hover {
+  background: var(--accent-olive);
+  color: white;
+}

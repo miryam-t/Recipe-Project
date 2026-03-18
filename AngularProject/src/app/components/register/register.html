@@ -1,0 +1,15 @@
+<div class="register-page-wrapper"> <div class="register-container">
+    <h2>יצירת חשבון חדש</h2>
+    <form (ngSubmit)="onRegister()">
+      <input type="text" name="username" [(ngModel)]="userData.username" placeholder="שם משתמש" required>
+      <input type="email" name="email" [(ngModel)]="userData.email" placeholder="אימייל" required>
+      <input type="password" name="password" [(ngModel)]="userData.password" placeholder="סיסמה" required>
+      <button type="submit">הירשם</button>
+    </form>
+    
+    <div class="login-link">
+      <span>כבר יש לך חשבון?</span>
+      <a routerLink="/login">התחברי כאן</a>
+    </div>
+  </div>
+</div>

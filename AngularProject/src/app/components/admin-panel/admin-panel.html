@@ -1,0 +1,29 @@
+<div class="admin-container">
+  <h2>ניהול בקשות הרשאת העלאה</h2>
+  <p class="subtitle">כאן תוכלי לאשר משתמשים שביקשו להפוך מ-Reader ל-Uploader</p>
+
+  <div *ngIf="pendingUsers.length === 0" class="empty-state">
+    אין בקשות חדשות כרגע.
+  </div>
+
+  <table class="admin-table" *ngIf="pendingUsers.length > 0">
+    <thead>
+      <tr>
+        <th>מזהה</th>
+        <th>שם משתמש</th>
+        <th>אימייל</th>
+        <th>פעולות</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of pendingUsers">
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <button (click)="approve(user.id)" class="approve-btn">אשר כמעלה מתכונים</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,34 @@
+<nav class="navbar" [class.is-home]="isHomePage" [class.scrolled]="isScrolled">
+  <div class="nav-container">
+
+    <div class="logo-wrapper">
+      <a routerLink="/home" class="logo-main">
+        מתכון
+        <span class="plus-sign">
+          <svg viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="30" cy="15" rx="8" ry="10" fill="#2d2d2d" />
+            <rect x="28" y="20" width="4" height="40" rx="2" fill="#2d2d2d" />
+            <g transform="translate(30, 40)">
+              <rect x="-25" y="-2" width="50" height="4" rx="2" fill="#2d2d2d" />
+              <path d="M -25 -2 L -28 -6 L -28 2 L -25 2 Z" fill="#2d2d2d" />
+            </g>
+          </svg>
+        </span>
+      </a>
+
+      <div class="separator" *ngIf="isHomePage && !isScrolled"></div>
+
+      <p class="tagline" *ngIf="isHomePage && !isScrolled">מתכונים עם טעם של בית</p>
+    </div>
+
+    <ul class="nav-links">
+      <li><a routerLink="/home" routerLinkActive="active-link">דף בית</a></li>
+      <li><a routerLink="/recipes" routerLinkActive="active-link">מתכונים</a></li>
+      <li *ngIf="auth.isLoggedIn"><a routerLink="/profile" routerLinkActive="active-link">אזור אישי</a></li>
+      <li *ngIf="!auth.isLoggedIn"><a routerLink="/login" class="login-btn">הרשמה / כניסה</a></li>
+      <li *ngIf="auth.isLoggedIn" class="user-greeting">שלום, {{auth.currentUser?.username}}</li>
+      <li *ngIf="auth.isLoggedIn"><a (click)="onLogout()" class="logout-link">התנתק</a></li>
+    </ul>
+
+  </div>
+</nav>

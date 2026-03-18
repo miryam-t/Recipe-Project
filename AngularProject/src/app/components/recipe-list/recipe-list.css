@@ -1,0 +1,337 @@
+/* משתני צבעים - כפרי וחם */
+:root {
+  --primary: #D2691E;
+  /* טרקוטה */
+  --bg-cream: #FFFDF5;
+  /* שמנת */
+  --accent-olive: #556B2F;
+  /* זית */
+  --text-main: #3E2723;
+  /* חום עמוק */
+  --white: #ffffff;
+  --border-color: #E0D7CC;
+}
+
+/* הגדרות כלליות למבנה */
+.main-layout {
+  display: flex;
+  height: 100vh;
+  /* גובה מסך מלא */
+  background-color: var(--bg-cream);
+  font-family: system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+  /* מונע גלילה של כל העמוד */
+}
+
+/* סרגל צד ימני */
+.sidebar {
+  width: 320px;
+  background-color: var(--white);
+  border-left: 2px solid var(--border-color);
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  overflow-y: auto;
+  /* מאפשר גלילה בתוך הסרגל אם התוכן ארוך */
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.03);
+  z-index: 10;
+}
+
+/* אזור המתכונים הנגלל */
+.content-area {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+  /* הגלילה קורית רק כאן! */
+  background-color: var(--bg-cream);
+}
+
+/* עיצוב ה-Hero בתוך הסרגל */
+.hero-section h1 {
+  color: var(--primary);
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+/* פילטרים */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.filter-group label {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: var(--accent-olive);
+}
+
+.custom-input,
+.custom-select {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: #fafafa;
+  font-size: 1rem;
+}
+
+/* גריד מתכונים */
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+/* כרטיס מתכון */
+.recipe-card {
+  background: var(--white);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+  border: 1px solid #f0ede9;
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-image {
+  position: relative;
+  height: 180px;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 15px;
+}
+
+.recipe-meta {
+  font-size: 0.85rem;
+  color: #777;
+  margin: 10px 0;
+  display: flex;
+  gap: 10px;
+}
+
+/* כפתורים */
+.search-btn,
+.view-btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.search-btn {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.view-btn {
+  flex: 1;
+}
+
+.match-badge {
+  background: var(--accent-olive);
+  color: white;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.fav-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background: none;
+  border: 1px solid #ff4444;
+  color: #ff4444;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* עיצוב כפתורים כללי בגלריה */
+.search-btn,
+.view-btn,
+.manage-btn {
+  background-color: var(--primary);
+  /* כתום טרקוטה */
+  color: #ffffff !important;
+  /* לבן בוהק לכיתוב */
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-weight: 700;
+  /* כתב עבה יותר */
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  /* אנימציה חלקה */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  /* צל שנותן עומק */
+  text-decoration: none;
+}
+
+/* אפקט כשמעבירים עכבר - נותן תחושה שאפשר ללחוץ */
+.search-btn:hover,
+.view-btn:hover,
+.manage-btn:hover {
+  background-color: #b35919;
+  /* גוון כהה יותר בסיבוב עכבר */
+  transform: translateY(-2px);
+  /* קפיצה קטנה למעלה */
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* אפקט בלחיצה ממשית */
+.search-btn:active,
+.view-btn:active,
+.manage-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* כפתור הניהול (צבע זית כדי להבדיל אותו) */
+.manage-btn {
+  background-color: var(--accent-olive);
+}
+
+.manage-btn:hover {
+  background-color: #3d4d21;
+}
+
+.view-btn,
+.search-btn {
+  background-color: var(--primary) !important;
+  color: white !important;
+  border: none !important;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(210, 105, 30, 0.3);
+  /* צל בצבע חמרה */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.view-btn:hover,
+.search-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(210, 105, 30, 0.4);
+  background-color: #bc5a1a !important;
+  /* גוון מעט כהה יותר */
+}
+
+.view-btn:active {
+  transform: translateY(-1px);
+}
+
+/* התאמה לנייד */
+@media (max-width: 850px) {
+  .main-layout {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    border-left: none;
+    border-bottom: 2px solid var(--border-color);
+  }
+
+  .content-area {
+    overflow-y: visible;
+  }
+}
+
+/* עיצוב אייקון הכוכב */
+.star-icon {
+  font-size: 1.5rem;
+  /* גודל הכוכב */
+  cursor: pointer;
+  /* הופך את הסמן ליד בדומה לקישור */
+  transition: transform 0.2s, color 0.2s;
+  /* אנימציה חלקה */
+  display: inline-block;
+}
+
+/* אפקט כשעומדים עם העכבר על כוכב */
+.star-icon:hover {
+  transform: scale(1.2);
+  /* הגדלה קלה של הכוכב */
+  color: #ffcc00 !important;
+  /* צבע זהב חזק יותר */
+}
+
+/* סידור התצוגה של הדירוג */
+.rating-display {
+  padding: 5px 0;
+  user-select: none;
+  /* מונע סימון טקסט כשלוחצים מהר על כוכבים */
+}
+
+/* עיצוב בסיסי ללב */
+.btn-fav {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  color: #ccc;
+  /* אפור כשלא מועדף */
+}
+
+/* כשהמתכון במועדפים - צבע אדום */
+.btn-fav.active {
+  color: #e74c3c;
+  animation: pulse 0.4s linear;
+}
+
+/* אפקט פעימה */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.4);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* אפקט מעבר עכבר */
+.btn-fav:hover {
+  transform: scale(1.1);
+}

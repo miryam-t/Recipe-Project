@@ -1,0 +1,223 @@
+/* עטיפה כללית - רקע שמנת אחיד לכל הדף */
+.profile-page {
+    background-color: #FFFDF5;
+    /* צבע השמנת של האתר */
+    min-height: 100vh;
+    padding: 60px 10%;
+    /* רווח מהצדדים לזרימה נקייה */
+    font-family: 'Assistant', sans-serif;
+    color: #3E2723;
+    /* טקסט חום כהה עדין */
+}
+
+/* ביטול המראה של mat-card - הופך אותם לשקופים */
+.user-info-card,
+.actions-card,
+.content-management-card,
+.admin-control-card {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    margin-bottom: 40px;
+    padding: 0 !important;
+}
+
+/* כותרות בסגנון הטרקוטה של האתר */
+h2,
+h3 {
+    color: #D2691E;
+    /* טרקוטה */
+    font-size: 2rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(85, 107, 47, 0.1);
+    /* קו הפרדה עדין בצבע זית */
+    padding-bottom: 10px;
+}
+
+/* עיצוב הפרופיל העליון */
+.header-layout {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.profile-image-frame {
+    width: 130px;
+    height: 130px;
+    border: 4px solid #556B2F;
+    /* מסגרת בצבע זית */
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(85, 107, 47, 0.1);
+}
+
+.circle-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* צ'יפ התפקיד */
+.role-chip {
+    display: inline-block;
+    background-color: #556B2F;
+    /* זית */
+    color: white;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+/* גריד המועדפים - נקי ללא מסגרות */
+.favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 30px;
+    margin-top: 25px;
+}
+
+.mini-recipe-card {
+    transition: 0.3s;
+}
+
+.card-img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    position: relative;
+    border: 1px solid #e0d7cc;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.remove-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #D2691E !important;
+}
+
+/* כפתורים בסגנון האתר */
+button[mat-flat-button],
+button[mat-raised-button] {
+    background-color: #D2691E !important;
+    /* טרקוטה */
+    color: white !important;
+    border-radius: 12px !important;
+    padding: 8px 25px !important;
+    font-weight: bold !important;
+}
+
+.stats-badge {
+    color: #556B2F;
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* כפתור ראשי - טרקוטה מעוגל (Pill Button) */
+button[mat-raised-button],
+.submit-btn {
+    background-color: #D2691E !important;
+    /* טרקוטה */
+    color: white !important;
+    border-radius: 50px !important;
+    /* עיגול מלא בצדדים */
+    padding: 12px 35px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px;
+    border: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    box-shadow: 0 4px 15px rgba(210, 105, 30, 0.2) !important;
+}
+
+button[mat-raised-button]:hover {
+    transform: translateY(-3px);
+    /* קפיצה קטנה למעלה */
+    box-shadow: 0 8px 25px rgba(210, 105, 30, 0.4) !important;
+    background-color: #b35919 !important;
+}
+
+/* כפתור משני - זית עדין (Outline) */
+button[mat-stroked-button] {
+    border: 2px solid #556B2F !important;
+    /* זית */
+    color: #556B2F !important;
+    border-radius: 50px !important;
+    padding: 10px 30px !important;
+    font-weight: 600 !important;
+    transition: 0.3s;
+}
+
+button[mat-stroked-button]:hover {
+    background-color: #556B2F !important;
+    color: white !important;
+}
+
+/* כפתור "הסר" (ה-X הקטן) - מראה מינימליסטי */
+.remove-btn {
+    background: white !important;
+    color: #D2691E !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+    transform: scale(0.8);
+    transition: 0.2s;
+}
+
+.remove-btn:hover {
+    transform: scale(1) rotate(90deg);
+    /* מסתובב טיפה במעבר עכבר */
+    color: #b35919 !important;
+}
+
+/* כפתור טקסט (למתכון המלא) */
+button[mat-button] {
+    color: #556B2F !important;
+    font-weight: 700 !important;
+    position: relative;
+}
+
+button[mat-button]::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    right: 15px;
+    width: 0;
+    height: 2px;
+    background-color: #D2691E;
+    transition: 0.3s;
+}
+
+button[mat-button]:hover::after {
+    width: 70%;
+    /* קו תחתון שצומח במעבר עכבר */
+}
+
+.profile-page {
+    position: relative;
+    overflow: hidden;
+    background-image: radial-gradient(circle at top left, rgba(85, 107, 47, 0.05) 0%, transparent 40%);
+}
+
+/* ענף זית דקורטיבי בפינה (אופציונלי) */
+.profile-page::before {
+    content: '🌿';
+    /* אפשר להחליף בתמונה של ענף זית אמיתי */
+    position: absolute;
+    top: 50px;
+    left: -20px;
+    font-size: 100px;
+    opacity: 0.1;
+    transform: rotate(45deg);
+    pointer-events: none;
+}
